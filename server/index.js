@@ -2,6 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').strategy;
 const LocalStrategy = require('passport-local').Strategy;
+const mongoose = require('mongoose');
 
 const app = express();
 
@@ -23,7 +24,8 @@ passport.use(new LocalStrategy(
   }
 ));
 
-
+passport.initialize();
+passport.session();
 
 // starting with oAuth authentication
 app.post('/login',
