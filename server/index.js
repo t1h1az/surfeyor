@@ -1,20 +1,38 @@
 const express = require('express');
 const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20');
+const GoogleStrategy = require('passport-google-oauth20').strategy;
+const LocalStrategy = require('passport-local').Strategy;
 
 const app = express();
 
-passport.use(new GoogleStrategy());
+// passport.use(new GoogleStrategy());
+
+//deploy a local strategy
+passport.use(new LocalStrategy(
+  function(username, password, done){
+    User.findOne({username: username}, function(err, user){
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username.' });
+      }
+      if (!user.validPassword(password)) {
+        return done(null, false, { message: 'Incorrect password.' });
+      }
+      return done(null, user);
+    });
+  }
+));
 
 
 
 // starting with oAuth authentication
-app.post(
-  '/login',
+app.post('/login',
   passport.authenticate(
     'local',
     { successRedirect: '/',
-      failureRedirect: '/login'
+      failureRedirect: '/login',
+      failureFlash: true,
+      successFlash: 'Login attempt successful'
     }
   ),
   function returnUser(req, res) {
