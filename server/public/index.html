@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> second auth training</title>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/48938155eb24b4ccdde09426066869504c6dab3c/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./style.css" >
+  </head>
+  <body>
+    <form action="http://localhost:5000/signedUp" method="post">
+      <table>
+        <tr>
+          <td id="input-group"><label id="input-group">Username:</label></td>
+          <td id="input-group"><input id="input-group" type="text" name="username"/></td>
+        </tr>
+        <tr>
+          <td><label id="input-group">Password:</label></td>
+          <td><input id="input-group" type="password" name="password"/></td>
+        </tr>
+        <tr>
+          <td><label id="input-group">First Name:</label></td>
+          <td><input id="input-group" type="text" name="firstname"/></td>
+        </tr>
+        <tr>
+          <td><label id="input-group">Lastname:</label></td>
+          <td><input id="input-group" type="text" name="lastname"/></td>
+        </tr>
+        <tr>
+          <td><label id="input-group">Email:</label></td>
+          <td><input id="input-group" type="text" name="email"/></td>
+        </tr>
+        <tr>
+          <td><input type="submit" value="Log In"/></td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

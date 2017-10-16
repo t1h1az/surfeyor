@@ -1,0 +1,16 @@
+body {
+  background-color: #1ee;
+  font: 'Roboto';
+}
+
+#input-group {
+  margin: 10px;
+}
+
+table {
+  left: 50%;
+}
+
+tr, input {
+  height: 40px;
+}
