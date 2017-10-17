@@ -4,8 +4,18 @@ const GoogleStrategy = require('passport-google-oauth20').strategy;
 const LocalStrategy = require('passport-local').Strategy;
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
 
 const app = express();
+
+//importing routes
+const index = require('./routes/index');
+const users = require('./routes/users');
+const flashcard = require('./routes/flashcards');
+const library = require('./routes/library');
 
 mongoose.Promise = global.Promise;
 
@@ -20,8 +30,7 @@ mongoose.connect('mongodb://localhost:27017/secondAuthTraining');
 
 app.use('/', require('./routes'));
 
-// set up template engine
-
+//==================================== set up template engine =================//
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jsx');
 app.engine('jsx', require('express-react-views').createEngine());

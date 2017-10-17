@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const flashcard = require('./Flashcard');
+const flashcards = require('./Flashcard');
 
 const Schema = mongoose.Schema;
 
@@ -8,7 +8,7 @@ const UserSchema = new Schema({
   username: {
     type: String,
     validate: {
-      validator: (name) => name.length > 2,
+      validator: (username) => username.length > 2,
       message: 'Name must be longer than 2 characters'//gives information how this object should be validated
     },
     required: [true, 'Name is required'],
@@ -17,7 +17,7 @@ const UserSchema = new Schema({
   firstname: {
     type: String,
     validate: {
-      validator: (name) => name.length > 2,
+      validator: (firstname) => firstname.length > 2,
       message: 'Firstname must be longer than 2 characters'//gives information how this object should be validated
     },
     required: [true, 'Firstname is required']
@@ -25,7 +25,7 @@ const UserSchema = new Schema({
   lastname: {
     type: String,
     validate: {
-      validator: (name) => name.length > 2,
+      validator: (lastname) => lastname.length > 2,
       message: 'Lastname must be longer than 2 characters'//gives information how this object should be validated
     },
     required: [true, 'Lastname is required']
@@ -35,6 +35,14 @@ const UserSchema = new Schema({
     validate: {
       validator: (password) => password.length > 2,
       message: 'Password must be longer than 2 characters'//gives information how this object should be validated
+    },
+    required: [true, 'Password is required']
+  },
+  email: {
+    type: String,
+    validate: {
+      validator: (email) => email.length > 2,
+      message: 'Email must be longer than 2 characters'//gives information how this object should be validated
     },
     required: [true, 'Password is required']
   },
