@@ -1,10 +1,15 @@
 const express = require('express');
-// const usersController = require('../controllers/usersController');
+const usersController = require('../controllers/usersController');
+const path = require("path");
 
-var router = express.Router();
+const router = express.Router();
 
-router.get('/', function(req, res){
-  // usersController.createUser(req, res);
+router.get('/signUp', (req, res) => {
+  res.sendFile(path.join(__dirname, '/../public','index.html'));
+});
+
+router.post('/signedUp', (req, res) => {
+  usersController.createUser(req, res);
 });
 
 module.exports = router;

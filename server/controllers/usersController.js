@@ -17,7 +17,6 @@ module.exports = {
       .then(() => console.log('saved to database'));
 
     res.redirect('/signUp');
-
   },
   receiveUser: function receiveUser() {},
   updateUser: function updateUser() {},
